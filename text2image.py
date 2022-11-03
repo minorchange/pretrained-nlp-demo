@@ -9,6 +9,5 @@ def generate_image(text, img_filename):
         model_id = "runwayml/stable-diffusion-v1-5"
         pipe = StableDiffusionPipeline.from_pretrained(model_id)
         pipe = pipe.to("cpu")
-        image = pipe(text).images[0]  
+        image = pipe(text).images[0]
         image.save(img_filename)
-    

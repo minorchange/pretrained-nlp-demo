@@ -6,10 +6,12 @@ import pandas as pd
 
 def zs_class_minimal(candidate_labels, sequence_to_classify):
 
-    classifier = pipeline("zero-shot-classification", model="MoritzLaurer/mDeBERTa-v3-base-mnli-xnli")
+    classifier = pipeline(
+        "zero-shot-classification", model="MoritzLaurer/mDeBERTa-v3-base-mnli-xnli"
+    )
     output = classifier(sequence_to_classify, candidate_labels, multi_label=False)
-    df = pd.DataFrame({k:output[k] for k in ('labels', 'scores') if k in output})
-    return(df)
+    df = pd.DataFrame({k: output[k] for k in ("labels", "scores") if k in output})
+    return df
 
 
 # def zs_class_trunc(candidate_labels, sequence):
@@ -25,7 +27,7 @@ def zs_class_minimal(candidate_labels, sequence_to_classify):
 #     # input = tokenizer(premise, hypothesis, truncation=True, return_tensors="pt")
 #     input = tokenizer(sequence, truncation=True, return_tensors="pt")  # truncate to 512, return pytorch tensors
 #     device = "cpu"  # device = "cuda:0" or "cpu"
-#     output = model(input["input_ids"].to(device)) 
+#     output = model(input["input_ids"].to(device))
 #     prediction = torch.softmax(output["logits"][0], -1).tolist()
 
 #     # candidate_labels = ["Frucht", "Banana", "Banane", "Auto", "Essen"]
