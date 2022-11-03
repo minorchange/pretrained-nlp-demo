@@ -1,4 +1,4 @@
-from translation import translate
+from tl import translate
 
 
 def test_translation_de_en():

@@ -1,4 +1,4 @@
-from sentence_similarity import similarity_matrix
+from ts import similarity_matrix
 import numpy as np
 
 

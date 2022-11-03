@@ -1,4 +1,4 @@
-from zs_classification import zs_class
+from nlp_tasks.zero_shot_classification.zsc import zs_class
 from long_text import wiki_elefant_text
 
 

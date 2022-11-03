@@ -1,4 +1,4 @@
-from language_detection import detect_language
+from nlp_tasks.language_detection.ld import detect_language
 
 
 def test_detect_language():
