@@ -1,4 +1,4 @@
-from tl import translate
+from nlp_tasks.translation.tl import translate
 
 
 def test_translation_de_en():

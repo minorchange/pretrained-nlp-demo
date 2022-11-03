@@ -1,5 +1,5 @@
-# from nlp_tasks.named_entity_recognition.ner import named_entity_recognition
-from ner import named_entity_recognition
+from nlp_tasks.named_entity_recognition.ner import named_entity_recognition
+
 
 def test_named_entity_recognition():
 

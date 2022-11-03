@@ -1,5 +1,5 @@
 from nlp_tasks.zero_shot_classification.zsc import zs_class
-from long_text import wiki_elefant_text
+from test_data.long_text import wiki_elefant_text
 
 
 def idx_of_element(series, element):

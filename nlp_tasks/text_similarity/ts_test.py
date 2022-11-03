@@ -1,4 +1,4 @@
-from ts import similarity_matrix
+from nlp_tasks.text_similarity.ts import similarity_matrix
 import numpy as np
 
 
