@@ -9,7 +9,7 @@ def idx_of_element(series, element):
 def test_zs_class_basic():
 
     sequence_to_classify = (
-        "Angela Merkel ist eine Politikerin in Deutschland und Vorsitzende der CDU"
+        "Angela Merkel war eine Politikerin in Deutschland und Vorsitzende der CDU"
     )
 
     candidate_labels = ["politics", "economy", "entertainment", "environment"]
@@ -43,6 +43,7 @@ def test_zs_class_long_text():
     ), "I assume that the most probable label is on top"
     assert idx_of_element(df.labels, "elefant") < idx_of_element(df.labels, "lion")
     assert idx_of_element(df.labels, "lion") < idx_of_element(df.labels, "frog")
+
 
 
 # test_zs_class()

@@ -9,7 +9,7 @@ def zs_class_minimal(candidate_labels, sequence_to_classify):
     classifier = pipeline(
         "zero-shot-classification", model="MoritzLaurer/mDeBERTa-v3-base-mnli-xnli"
     )
-    output = classifier(sequence_to_classify, candidate_labels, multi_label=False)
+    output = classifier(sequence_to_classify, candidate_labels, multi_label=True)
     df = pd.DataFrame({k: output[k] for k in ("labels", "scores") if k in output})
     return df
 
@@ -39,3 +39,19 @@ def zs_class_minimal(candidate_labels, sequence_to_classify):
 
 
 zs_class = zs_class_minimal
+
+
+
+
+
+
+# sequence_to_classify = (
+#     "Angela Merkel ist eine Politikerin in Deutschland und Vorsitzende der CDU"
+# )
+
+# candidate_labels = ["politics", "economy", "entertainment", "environment"]
+
+# df = zs_class(candidate_labels, sequence_to_classify)
+
+
+# print()

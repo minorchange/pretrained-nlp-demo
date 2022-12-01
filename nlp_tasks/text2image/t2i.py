@@ -23,13 +23,10 @@ def generate_filename_png_from_text(text):
     return filename
 
 
-def generate_image(text):
-
-    img_filename = generate_filename_png_from_text(text)
-    img_path = os.path.join("generated_images", img_filename)
+def generate_image(text, img_path):
 
     if exists(img_path):
-        print("Filename already exists. Will not create another one..")
+        print(f"Filename {img_path} already exists. Will not create another one..")
     else:
         model_id = "runwayml/stable-diffusion-v1-5"
         pipe = StableDiffusionPipeline.from_pretrained(model_id)
@@ -37,3 +34,4 @@ def generate_image(text):
         image = pipe(text).images[0]
         image.save(img_path)
     return(img_path)
+
