@@ -3,7 +3,7 @@ from nlp_tasks.language_detection.ld import detect_language_formforfile
 from nlp_tasks.named_entity_recognition.ner import named_entity_recognition
 from nlp_tasks.summarization.sum import summarize
 from nlp_tasks.text2image.t2i import generate_image
-from nlp_tasks.text_similarity.ts import similarity_matrix
+# from nlp_tasks.text_similarity.ts import similarity_matrix
 from nlp_tasks.translation.tl import translate
 from nlp_tasks.zero_shot_classification.zsc import zs_class
 from preprocessing.clean_text import clean_text
@@ -32,18 +32,6 @@ def run_if_outtext_not_existant(f, *args, outfile):
     with open(outfile) as f:
         lines = f.read().splitlines()
     return lines
-
-
-# def run_if_outdf_not_existant(f, *args, outfile):
-# if not os.path.exists(outfile):
-# print("File ", outfile, " does not exist yet.")
-# outdf = f(*args)
-# outdf.to_csv(outfile, sep=',', index=False)
-# else:
-# print("File ", outfile, " exists.")
-# with open(outfile) as f:
-# df = pandas.read_csv(outfile)
-# return df
 
 
 class txtdecoration:
@@ -246,6 +234,7 @@ def outfolder_from_infolder(in_folder_abs, in_path_toplevel, out_path_toplevel):
     return out_folder_abs
 
 
+
 if __name__ == "__main__":
 
     for folder_abs, _, files in os.walk(in_path_toplevel):
@@ -256,3 +245,31 @@ if __name__ == "__main__":
             print(f)
             td = txtdecoration(folder_abs, f, out_folder_abs, tag_candidates_path)
             td.process_all()
+
+    # for folder_abs, _, files in os.walk(in_path_toplevel):
+    #     out_folder_abs = outfolder_from_infolder(
+    #         folder_abs, in_path_toplevel, out_path_toplevel
+    #     )
+
+    #     d = {}
+    #     for f in files:
+    #         filepath_abs = os.path.join(folder_abs, f)
+    #         filename_noextension = f.split(".")[0]
+    #         d[filename_noextension] = filepath_abs
+
+    # from nlp_tasks.text_similarity.ts import similarity_matrix, visualize_similarities
+
+    # import numpy as np
+    # v = np.array(list(d.values()))
+    # k = np.array(list(d.keys()))
+
+    # file_nr = np.array([int(s.split("_")[0]) for s in k])
+    # sort_idx = np.argsort(file_nr)
+
+    # v = v[sort_idx]
+    # k = k[sort_idx]
+    # k = [h[:20] for h in k]
+
+    # s = similarity_matrix(v, v)
+    # visualize_similarities(s, k, k)
+    # print()

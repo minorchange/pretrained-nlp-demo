@@ -22,14 +22,14 @@ def similarity_matrix(texts1, texts2):
     return sim_mat
 
 
-def visualize_similarities(similarities, texts1, texts2):
+def visualize_similarities(similarities, lables1, labels2):
 
     sim = np.round(similarities, 2)
     fig, ax = plt.subplots()
     im = ax.imshow(sim, cmap="winter")
 
-    ts1 = [s[:40] for s in texts1]
-    ts2 = [s[:40] for s in texts2]
+    ts1 = [s[:40] for s in lables1]
+    ts2 = [s[:40] for s in labels2]
 
     # Show all ticks and label them with the respective list entries
     ax.set_xticks(np.arange(len(ts2)), labels=ts2)
@@ -43,7 +43,28 @@ def visualize_similarities(similarities, texts1, texts2):
         for j in range(len(ts2)):
             text = ax.text(j, i, sim[i, j], ha="center", va="center", color="w")
 
-    ax.set_title("Sentence Similarity")
+    ax.set_title("Text Similarity")
     fig.tight_layout()
 
     plt.show()
+
+
+if __name__ == "__main__":
+
+    texts1 = [
+        "Die Katze sitzt draußen",
+        "Ein Mann spielt Gitarre",
+        "Der neue Film ist großartig",
+    ]
+
+    texts2 = [
+        "Der Hund spielt im Garten",
+        "Eine Frau sieht fern",
+        "Der neue Film ist so toll",
+        "Der neue Film ist so toll. Ich freue mich.",
+    ]
+
+    sm = similarity_matrix(texts1, texts2)
+
+    visualize_similarities(sm, texts1, texts2)
+    print()
